@@ -4,7 +4,7 @@
 	padding: 0;
 }
 
-html, body {
+html, body, #root, .fifa-search {
 	height: 100%;
 }
 
@@ -44,5 +44,45 @@ body {
 		color: white;
 		cursor: pointer;
 		width: 200px;
+	}
+}
+
+.search-result-wrapper {
+	height: calc(100% - 100px);
+	min-height: 300px;
+	overflow: auto;
+}
+
+.loader-wrapper, .error-wrapper {
+    left: 50%;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.loader-wrapper {
+	
+	.loader-circle {
+		animation: rotate 1.5s linear infinite;
+	    border-radius: 50%;
+	    border: solid 8px #eee;
+	    border-left-color: #ccc;
+	    box-shadow: 0 0 40px rgba(255,255,255,.5);
+	    background: #f1f1f1;
+	    height: 80px;
+	    margin: 0 auto;
+	    width: 80px;
+
+	}
+}
+
+
+@keyframes rotate {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
 	}
 }

@@ -1,6 +1,5 @@
-const searchBegin = (payload) => ({
-	type: 'SEARCH_BEGIN',
-	payload
+const searchBegin = () => ({
+	type: 'SEARCH_BEGIN'
 })
 
 const searchError = (payload) => ({
@@ -17,15 +16,21 @@ const searchByCountry = (countryStr) => {
 	return (dispatch) => {
 		dispatch(searchBegin());
 
-		fetch('http://worldcup.sfg.io/matches/country?fifa_code=' + countryStr)
-		.then(resp => resp.json())
+		fetch('http://worldcup.sfg.io/matches/')
 		.then(resp => {
-			if(resp.ok)
-				dispatch(searchSuccess(resp));
-			else
-				dispatch(searchError(err));
+			if(!resp.ok) {
+				console.log(resp);
+				throw new Error(resp.statusText);
+			}
+			
+			return resp.json();
+		})
+		.then(resp => {
+			console.log('-------------------', resp)
+			dispatch(searchSuccess(resp));
 		})
 		.catch(err => {
+			console.log(err);
 			dispatch(searchError(err));
 		})
 	}

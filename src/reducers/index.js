@@ -21,7 +21,7 @@ const search = (state = {}, action) => {
 				...state,
 				loading: false,
 				error: null,
-				results: payload
+				results: action.payload
 			}
 		default:
 			return state;

@@ -3,12 +3,19 @@ import { connect } from 'react-redux';
 
 import actions from './actions';
 
-const App = ({loading, error, results}) => {
+const App = ({loading, error, results, searchByCountry}) => {
+	const handleFormSubmit = (e) => {
+		e.preventDefault();
+
+		let _searchCountry = e.target.searchValue.value;
+		searchByCountry(_searchCountry);
+	}
+
 	return <div className="fifa-search">
 		<div className="search-form-wrapper">
-			<form className="search-form">
+			<form className="search-form" onSubmit={handleFormSubmit}>
 				<i className="fa fa-search" />
-				<input type="text" placeholder="Search countries by FIFA code..." />
+				<input type="text" name="searchValue" autoFocus placeholder="Search countries by FIFA code..." />
 				<input type="submit" value="Search" />
 			</form>
 		</div>
@@ -35,13 +42,13 @@ const App = ({loading, error, results}) => {
 			}
 			{
 				!loading && !error && (
-					<div className="search-result-wrapper">
+					<div className="search-result-items">
 						{
 							results && results.map((item,i) => {
-								<li key={i}>
+								return <li key={i}>
 									{ item.location }
 								</li>
-							})
+							}).join('')
 						}
 					</div>
 				)
@@ -52,14 +59,13 @@ const App = ({loading, error, results}) => {
 
 const mapStateToProps = (state, props) => {
 	return {
-		...state,
-		...props
+		...state.search
 	}
 }
 
 const mapDispatchToProps = (dispatch, props) => {
 	return {
-		searchByCountry: dispatch(actions.searchByCountry)
+		searchByCountry: url => dispatch(actions.searchByCountry(url))
 	}
 }
 
