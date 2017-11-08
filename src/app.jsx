@@ -8,9 +8,9 @@ import actions from './actions';
 const App = ({loading, error, results, searchByCountry}) => {
 	const handleFormSubmit = (e) => {
 		e.preventDefault();
-
-		let _searchCountry = e.target.searchValue.value;
-		searchByCountry(_searchCountry);
+		let _searchCountry = e.target.searchValue.value.toUpperCase();
+		if(_searchCountry)
+			searchByCountry(_searchCountry);
 	}
 
 	return <div className="fifa-search">
@@ -33,11 +33,9 @@ const App = ({loading, error, results, searchByCountry}) => {
 			{
 				!loading && error && (
 					<div className="error-wrapper">
-						<div className="status-code">
-							{ error.statusCode }
-						</div>
+						<div className="status-code">Oops... ;(</div>
 						<div className="status-text">
-							{ error.statusText }
+							{ error + '' }
 						</div>
 					</div>
 				)

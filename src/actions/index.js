@@ -16,17 +16,26 @@ const searchByCountry = (countryStr) => {
 	return (dispatch) => {
 		dispatch(searchBegin());
 
-		fetch('http://worldcup.sfg.io/matches/')
+		fetch('http://worldcup.sfg.io/matches/country?fifa_code=' + countryStr)
 		.then(resp => {
-			if(!resp.ok) {
-				console.log(resp);
-				throw new Error(resp.statusText);
+			if(resp.ok) {
+				return resp.json();
 			}
-			
-			return resp.json();
+			else {
+				console.log('ERROR ----> ', resp);
+
+				let err = new Error();
+	            err.name = resp.status;
+	            err.message = resp.statusText;
+	            err.headers = {};
+	            resp.headers.forEach(function(val, key) {
+	                err['headers'][key] = val
+	            });
+
+	            throw err;
+			}
 		})
 		.then(resp => {
-			console.log('-------------------', resp)
 			dispatch(searchSuccess(resp));
 		})
 		.catch(err => {

@@ -44,6 +44,7 @@ body {
 	input[type=text] {
 		background: #fafafa;
 		border: solid 1px #dce0e0;
+		letter-spacing: 2px;
 		width: calc(100% - 200px);
 	}
 
@@ -133,6 +134,23 @@ body {
 		}
 	}
 
+}
+
+.error-wrapper {
+    padding: 1em;
+    color: #ff5a5f;
+
+    .status-code {
+    	font-weight: bold;
+    	font-size: 4em;
+    	text-align: left;
+    }
+
+    .status-text {
+    	display: inline-block;
+    	font-size: 1.5em;
+    	padding-left: .25em;
+    }
 }
 
 .loader-wrapper, .error-wrapper {
