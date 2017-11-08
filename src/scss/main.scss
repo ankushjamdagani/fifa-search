@@ -10,17 +10,26 @@ html, body, #root, .fifa-search {
 
 body {
 	background: #f1f1f1;
+	color: #333;
 	font-family: sans-serif;
+	font-size: 14px;
 	letter-spacing: .5px;
 }
 
 .search-form-wrapper {
 	padding: 1em;
 	text-align: center;
+	/*margin: 1em;*/
+	position: relative;
+	z-index: 111;
 
 	form {
+		border-radius: 4px;
+		/*border-bottom: solid 3px #dce0e0;*/
+		box-shadow: 0 0 10px rgba(0,0,0,.1);
 		margin: 0 auto;
 		max-width: 800px;
+		overflow: hidden;
 		width: 100%;
 	}
 
@@ -39,8 +48,8 @@ body {
 	}
 
 	input[type=submit] {
-		background: crimson;
-		border: solid 1px crimson;
+		background: #ff5a5f;
+		border: solid 1px #ff5a5f;
 		color: white;
 		cursor: pointer;
 		width: 200px;
@@ -51,6 +60,79 @@ body {
 	height: calc(100% - 100px);
 	min-height: 300px;
 	overflow: auto;
+
+	.match {
+		background: #fafafa;
+		box-shadow: 0 5px 10px rgba(0,0,0,.01);
+		display: inline-block;
+		margin: 1em .5em;
+		padding: 2em;
+	    position: relative;
+	    width: calc(100% - 1em);
+
+		.match-number {
+		    position: absolute;
+		    top: -0.5em;
+		    left: 0.6em;
+		    height: 2em;
+		    padding: 0.5em 0.5em;
+		    background: #666;
+		    color: white;
+		    font-size: .9em;
+		    width: 30px;
+		    text-align: center;
+		    border-radius: 2px;
+		    font-weight: bold;
+		}
+
+		
+		h3 {    
+			margin-bottom: .5em;
+			border-bottom: solid 1px #f1f1f1;
+			padding: .25em;
+			text-align: center;
+			background: #f5f5f5;
+		}
+
+		p span {
+		    font-weight: bold;
+		    letter-spacing: 1px;
+		}
+
+		p {
+		    color: #999;
+		    font-size: 12px;
+		    margin-bottom: 2em;
+			text-align: right;
+		}
+
+		.match-result {
+		    padding: 1em;
+		    background: #57ef78;
+		    color: white; 
+		    font-weight: bold;
+		    text-align: center;
+		    border-radius: 2px;
+		    box-shadow: 1px 2px 7px rgba(0, 0, 0, 0.1);
+
+		    &.match-draw {
+		    	background: #efd258;
+		    }
+		}
+	}
+
+	@media screen and (min-width: 600px) {
+		.match {
+	    	width: calc(50% - 1em);
+		}
+	}
+
+	@media screen and (min-width: 1024px) {
+		.match {
+	    	width: calc(33.333% - 1em);
+		}
+	}
+
 }
 
 .loader-wrapper, .error-wrapper {

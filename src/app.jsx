@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import { Match } from './components';
+
 import actions from './actions';
 
 const App = ({loading, error, results, searchByCountry}) => {
@@ -45,10 +47,8 @@ const App = ({loading, error, results, searchByCountry}) => {
 					<div className="search-result-items">
 						{
 							results && results.map((item,i) => {
-								return <li key={i}>
-									{ item.location }
-								</li>
-							}).join('')
+								return <Match data={item} key={i} />
+							})
 						}
 					</div>
 				)
