@@ -3,3 +3,46 @@
 	margin: 0;
 	padding: 0;
 }
+
+html, body {
+	height: 100%;
+}
+
+body {
+	background: #f1f1f1;
+	font-family: sans-serif;
+	letter-spacing: .5px;
+}
+
+.search-form-wrapper {
+	padding: 1em;
+	text-align: center;
+
+	form {
+		margin: 0 auto;
+		max-width: 800px;
+		width: 100%;
+	}
+
+	input {
+		font-size: 1.5em;
+		border: 0;
+		outline: 0;
+		line-height: 1.5em;
+		padding: .5em 1em;
+	}
+
+	input[type=text] {
+		background: #fafafa;
+		border: solid 1px #dce0e0;
+		width: calc(100% - 200px);
+	}
+
+	input[type=submit] {
+		background: crimson;
+		border: solid 1px crimson;
+		color: white;
+		cursor: pointer;
+		width: 200px;
+	}
+}
